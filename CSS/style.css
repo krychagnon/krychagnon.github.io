@@ -1,3 +1,15 @@
+/* Notes
+J'ai mis en commentaire l'ancienne version pour aider
+à trouver ce qui est différent
+*/
+
+/*# sourceMappingURL=style.css.map */
+
+/* Variables */
+
+
+
+/* Appliquer à toute la page */
 @import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&display=swap");
 * {
   font-family: "Josefin Sans", sans-serif;
@@ -6,7 +18,7 @@
   padding: 0;
   text-align: center;
 }
-
+/* Appliquer au body */
 body {
   display: grid;
   align-items: center;
@@ -15,27 +27,38 @@ body {
   background: #2f3542;
   color: #dfe4ea;
 }
+
+/* Appliquer au 1er niveau */
+
+
+/* Appliquer 2ème niveau */
+.hidden
+{
+  display: none;
+}
+
+/* Appliquer 3ème niveau */
+body .container .choices 
+{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem auto 3rem;
+  /* width: 500px; */
+  width: 50%;
+}
+
 body h1 {
   margin-bottom: 3rem;
   text-transform: uppercase;
   font-size: 3rem;
 }
-body h1 span, body h1 i {
-  color: #ffa502;
-}
-body h3 {
-  color: #ffa502;
-  font-size: 1.5rem;
-}
-body .container .choices {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 3rem auto 3rem;
-  width: 500px;
-}
-body .container .choices button {
+
+/* Appliquer au quatrième niveau */
+body .container .choices button 
+{
   flex: 1 0 45%;
-  width: 200px;
+  /* width: 200px; */
+  width: 500px;
   height: 80px;
   border-radius: 5px;
   cursor: pointer;
@@ -46,20 +69,28 @@ body .container .choices button {
   user-select: none;
   font-weight: 600;
 }
-body .container .choices button:hover {
+
+body .container .choices button:hover 
+{
   background: #ffa502;
   transition: 0.5s;
 }
-body .container .choices button:active {
+
+body .container .choices button:active 
+{
   transform: scale(0.9);
   transition: transform 0.1s;
 }
-body .container .choices button p {
-  font-size: 1.3rem;
-}
-body #progress {
-  font-size: 1.3rem;
+
+/* Appliquer au dernier niveau */
+body h1 span, body h1 i {
   color: #ffa502;
 }
 
-/*# sourceMappingURL=style.css.map */
+body .container .choices button p {
+  font-size: 1.3rem;
+}
+/* body #progress {
+  font-size: 1.3rem;
+  color: #ffa502;
+} */
