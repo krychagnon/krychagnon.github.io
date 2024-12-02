@@ -1,18 +1,14 @@
-//Tâches à faire
-//Comprendre le code JS
-//Le classer dans les bons endroits
-//Changer Les questions
-
-
 // ====================================================
 // =  Déclaration des variables globales              =
 // ====================================================
+
 
 
 // ====================================================
 // =  Déclaration des événements                      =
 // ====================================================
 
+//Quand on click, on enlève la boîte dialog
 
 
 // ====================================================
@@ -20,10 +16,10 @@
 // ====================================================
 
 
+//Faire l'affichage modal ici
 
-// ====================================================
-// =  Déclaration des fonctions                       =
-// ====================================================
+
+
 
 /*
 Class Question
@@ -40,8 +36,15 @@ class Question
       this.text = text;
       this.choices = choices;
       this.answer = answer;
+      this.clic = "";
     }
-    
+
+    saveReponse(choices)
+    {
+        //enregistre les choix cliqués dans this.clic
+        this.clic = choices;
+    }
+
     isCorrectAnswer(choice) {
       return this.answer === choice;
     }
@@ -71,11 +74,18 @@ constructor(questions) {
 getCurrentQuestion() {
     return this.questions[this.currentQuestionIndex];
 }
-guess(answer) {
+/*
+J'ai ajouté à la fonction guess, 
+la fonction saveReponse pour créer un tableau parallèle qui enregistre les réponses
+*/
+
+guess(answer) {  
     if (this.getCurrentQuestion().isCorrectAnswer(answer)) {
     this.score++;
     }
+    this.getCurrentQuestion().saveReponse(answer);
     this.currentQuestionIndex++;
+    
 }
 hasEnded() {
     return this.currentQuestionIndex >= this.questions.length;
@@ -107,11 +117,42 @@ elementShown: function(id, text) {
     let element = document.getElementById(id);
     element.innerHTML = text;
 },
+/*
+La fonction endQuiz remplace tout le HTML par la variable endQuizHTML
+Il prend les H3 et la fonction AfficherReponse
+AfficherReponse vérifie si la vrai réponse et la réponse cliquer sont pareil
+Ils indiquent à la fin à l'aide d'une couleur si elle était bonne ou non
+Cela aide le client à savoir ses mauvaises réponses. 
+*/
 endQuiz: function() {
+    
+    function AfficherReponse()
+    {
+        let reponse= "";
+        for (i=0; i<questions.length;i++)
+        {
+            let couleur="green";
+            if(questions[i].answer != questions[i].clic)
+            {
+                couleur = "red";
+            }
+            
+            reponse+=`<h3 style = "color:${couleur}"> ${questions[i].clic} </h3>`;
+        }
+        return reponse;
+    }
+   
+    
     endQuizHTML = `
     <h1>Quiz terminé !</h1>
-    <h3> Votre score est de : ${quiz.score} / ${quiz.questions.length}</h3>`;
+    </br>
+    <h3> Votre score est de : ${quiz.score} / ${quiz.questions.length}</h3>
+    </br>
+    <h3> Vos réponses étaient: </h3> </br>`
+    + AfficherReponse();
+
     this.elementShown("quiz", endQuizHTML);
+    
 },
 question: function() {
     this.elementShown("question", quiz.getCurrentQuestion().text);
@@ -124,6 +165,7 @@ choices: function() {
         quiz.guess(guess);
         quizApp();
     }
+
     }
     // affichage choix + prise en compte du choix
     for(let i = 0; i < choices.length; i++) {
@@ -143,9 +185,12 @@ Si le quiz a arrêté, affiche endQuiz
 Sinon montre les questions, les choix et le progrès
 */
 quizApp = () => {
-if (quiz.hasEnded()) {
+if (quiz.hasEnded()) 
+{
     display.endQuiz();
-} else {
+    
+} 
+else {
     display.question();
     display.choices();
     display.progress();
