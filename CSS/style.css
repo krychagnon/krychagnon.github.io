@@ -30,22 +30,6 @@ J'ai mis en commentaire l'ancienne version pour aider
   color: #dfe4ea;
 }
 
-#pointCentre
-{
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  /* border: 1px blue;
-  border-radius: 200px; */
-
-}
-
 /* Appliquer 2ème niveau */
 .hidden
 {
@@ -56,28 +40,22 @@ J'ai mis en commentaire l'ancienne version pour aider
 {
   position: relative;
 
-  width: 800px;
-  margin-left: -400px;
+  width: 50%;
+  margin-left: 25vw;
 
-  height: 700px;
-  margin-top: -350px;
+  height: 80%;
+  margin-top: 10vh;
 
   padding: 60px;
 
   border-width: 2px;
   border-color: blue;
   border-radius: 25px;
+  box-shadow: -1px 11px 20px 4px rgba(0,0,0,0.40);  
 }
 
 ::backdrop {
-  background-image: linear-gradient(
-    45deg,
-    magenta,
-    rebeccapurple,
-    dodgerblue,
-    green
-  );
-  opacity: 0.75;
+  background: rgba(93, 188, 251, 0.5);
 }
 
 /* Appliquer 3ème niveau */
@@ -191,4 +169,48 @@ body .container .choices button p {
   font-size: 24px;
   padding: 10px;
   color: #dfe4ea;
+}
+
+#neplusAfficher
+{
+  width: 500px;
+  font-size: 24px;
+  color: black;
+  background-color: white;
+  border: none;
+}
+
+/* Média Queries */
+
+@media screen and (width <=800px)
+{
+  #imageMegaman
+  {
+    width: 50%;
+  }
+
+  #qui
+  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #pop
+  {
+    font-size: smaller;
+    padding:15px;
+
+    width: 50%;
+    margin-left: 25%;
+
+    height: 65%;
+    margin-top: 5%;
+
+    overflow: hidden;
+    
+  }
+
 }

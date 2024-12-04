@@ -1,26 +1,40 @@
 // ====================================================
 // =  Déclaration des variables globales              =
 // ====================================================
-
+const fermer = document.getElementById("fermer");
+const fermerToujours = document.getElementById("neplusAfficher");
+const dialog = document.getElementById("pop");
 
 
 // ====================================================
 // =  Déclaration des événements                      =
 // ====================================================
 
-//Quand on click, on enlève la boîte dialog
+fermer.addEventListener("click", FermerPop);
+fermerToujours.addEventListener("click", FermerToujours)
 
 
 // ====================================================
 // =  Code qui sera exécuté au chargement de la page  =
 // ====================================================
+if (!localStorage.getItem("dialog_fermer"))
+{
+    dialog.showModal();
+}
 
+// ====================================================
+// =  Déclaration des fonctions                       =
+// ====================================================
+function FermerPop()
+{
+    dialog.close();
+}
 
-//Faire l'affichage modal ici
-
-
-
-
+function FermerToujours()
+{
+    dialog.close();
+    localStorage.setItem("dialog_fermer", "true");
+}
 /*
 Class Question
 Paramètre Text = La question
