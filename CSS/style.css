@@ -38,6 +38,9 @@ J'ai mis en commentaire l'ancienne version pour aider
 
 #pop
 {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: relative;
 
   width: 50%;
@@ -51,7 +54,9 @@ J'ai mis en commentaire l'ancienne version pour aider
   border-width: 2px;
   border-color: blue;
   border-radius: 25px;
-  box-shadow: -1px 11px 20px 4px rgba(0,0,0,0.40);  
+  box-shadow: -1px 11px 20px 4px rgba(0,0,0,0.40); 
+  
+  gap: 20px;
 }
 
 ::backdrop {
@@ -90,6 +95,11 @@ footer
 
   gap: 20px;
 
+}
+
+#imageMegaman
+{
+  width: 25%;
 }
 
 /* Appliquer au quatrième niveau */
@@ -206,7 +216,7 @@ body .container .choices button p {
     width: 50%;
     margin-left: 25%;
 
-    height: 65%;
+    height: 80%;
     margin-top: 5%;
 
     overflow: hidden;
